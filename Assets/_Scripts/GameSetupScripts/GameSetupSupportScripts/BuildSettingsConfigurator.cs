@@ -14,9 +14,9 @@ public static class BuildSettingsConfigurator
     {
         // Define the paths to your scenes
         string[] scenePaths = {
-            "Assets/Scenes/TitleScene.unity",
-            "Assets/Scenes/GameScene.unity",
-            "Assets/Scenes/GameOverScene.unity",
+            "Assets/Scenes/StartSceneA2.unity",
+            "Assets/Scenes/GameSceneA2.unity",
+            "Assets/Scenes/EndSceneA2.unity",
 
         };
 
