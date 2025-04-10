@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 5f1123e370cc5f948b2c6ccf106befa9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - sceneChangeSFX: {fileID: 8300000, guid: 0431b7d5bffe10040ae4418c84caf7af, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7ac55d26fd382aa40b9c621e12bff848
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemyBulletPrefab: {fileID: 7254336776268272031, guid: 8cf79c5c01900224f9d94b649a0591e4, type: 3}
+  - shootingPoint: {instanceID: 0}
+  - ScoreText: {fileID: 7878571522959416727, guid: 8716ee71b13a8a94c8ab9bdd38c37700, type: 3}
+  - healthPickupPrefab: {fileID: 6870690489958581038, guid: a1218af16fddbea4fa48d81fb4197bff, type: 3}
+  - CouscousPickupPrefab: {fileID: 9129278304033325454, guid: 9b08b767483512547852dd9105ebade6, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
