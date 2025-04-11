@@ -12,6 +12,9 @@ public class PlayerScript : MonoBehaviour
     private int currentLives;
     [SerializeField] private TMP_Text livesText; // UI Text to display lives
     [SerializeField] private AudioClip damageSFX;
+    [SerializeField] private AudioClip JumpSFX;
+    [SerializeField] private AudioClip KnifeflightSFX; // Crouching SFX
+
     private AudioSource audioSource;
 
     // Add jump and crouch settings
@@ -61,12 +64,15 @@ public class PlayerScript : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply jump force
+            audioSource.PlayOneShot(JumpSFX);
+            
         }
 
         // Handle Crouching
         if (Input.GetKey(KeyCode.S)) // Crouch when pressing "S" key
         {
             Crouch(true);
+            audioSource.PlayOneShot(KnifeflightSFX);
         }
         else
         {

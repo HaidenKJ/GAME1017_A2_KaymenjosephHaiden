@@ -1064,6 +1064,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2120839063621981438, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
+      propertyPath: JumpSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 936c36844bf9cf04a8c92ed5369dfea2, type: 3}
+    - target: {fileID: 2120839063621981438, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: damageSFX
       value: 
       objectReference: {fileID: 8300000, guid: 545f5014b7e13764da28a1c298bb510a, type: 3}
@@ -1075,6 +1079,10 @@ PrefabInstance:
       propertyPath: CouscousPrefab
       value: 
       objectReference: {fileID: 7228735301318656504, guid: f0a5e49687e909d4eaf8167179a90b1f, type: 3}
+    - target: {fileID: 2120839063621981438, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
+      propertyPath: KnifeflightSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: ded9183f09938cd4c84d4a1fe0ff967e, type: 3}
     - target: {fileID: 4814844225735137599, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: m_Size.x
       value: 1.5
@@ -1586,8 +1594,16 @@ PrefabInstance:
       value: Nautolan Ship - Support - Base
       objectReference: {fileID: 0}
     - target: {fileID: 6417754216779444331, guid: b8dbb83dbfe7d7247abcabb328290bf0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417754216779444331, guid: b8dbb83dbfe7d7247abcabb328290bf0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6417754216779444331, guid: b8dbb83dbfe7d7247abcabb328290bf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6417754216779444331, guid: b8dbb83dbfe7d7247abcabb328290bf0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2176,11 +2192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111854278562051921, guid: 6afdf8e8675be814e97c669b8f54fa65, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1111854278562051921, guid: 6afdf8e8675be814e97c669b8f54fa65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.89
+      value: -4.21
       objectReference: {fileID: 0}
     - target: {fileID: 1111854278562051921, guid: 6afdf8e8675be814e97c669b8f54fa65, type: 3}
       propertyPath: m_LocalPosition.z

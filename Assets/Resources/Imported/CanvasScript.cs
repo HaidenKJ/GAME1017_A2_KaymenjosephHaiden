@@ -9,7 +9,7 @@ public class CanvasScript : MonoBehaviour
     void Awake()
     {
         // Add Hellwalker and start playing it in a loop
-        SoundManager.AddSound("Hellwalker", Resources.Load<AudioClip>("hellwalker"), SoundType.SOUND_MUSIC);
+        // SoundManager.AddSound("Hellwalker", Resources.Load<AudioClip>("hellwalker"), SoundType.SOUND_MUSIC);
 
         // Optionally, use manually assigned music
         if (manualMusic != null)
@@ -21,8 +21,8 @@ public class CanvasScript : MonoBehaviour
     void Start()
     {
 
-        SoundManager.AddSound("PGC", Resources.Load<AudioClip>("Pistol Gun Cocking Sound Effects"), SoundType.SOUND_SFX);
-        SoundManager.AddSound("Collision", Resources.Load<AudioClip>("HalfLife1Crowbarhitonce"), SoundType.SOUND_SFX);
-        SoundManager.AddSound("RestartDing", Resources.Load<AudioClip>("ding-sfx"), SoundType.SOUND_SFX);
+        // SoundManager.AddSound("PGC", Resources.Load<AudioClip>("Pistol Gun Cocking Sound Effects"), SoundType.SOUND_SFX);
+        // SoundManager.AddSound("Collision", Resources.Load<AudioClip>("HalfLife1Crowbarhitonce"), SoundType.SOUND_SFX);
+        // SoundManager.AddSound("RestartDing", Resources.Load<AudioClip>("ding-sfx"), SoundType.SOUND_SFX);
     }
 }

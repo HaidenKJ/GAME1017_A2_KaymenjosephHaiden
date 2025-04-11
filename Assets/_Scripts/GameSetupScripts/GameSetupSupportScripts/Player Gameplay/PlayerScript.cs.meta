@@ -4,10 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - bulletPrefab: {fileID: 8068327820363236107, guid: 2b846d81e7bc63d47862a67fa62475fa, type: 3}
-  - CouscousPrefab: {fileID: 7228735301318656504, guid: f0a5e49687e909d4eaf8167179a90b1f, type: 3}
   - livesText: {fileID: 2446128053293198927, guid: 04bfb200d06424a499fdac77c556c029, type: 3}
   - damageSFX: {fileID: 8300000, guid: 545f5014b7e13764da28a1c298bb510a, type: 3}
+  - JumpSFX: {fileID: 8300000, guid: 936c36844bf9cf04a8c92ed5369dfea2, type: 3}
+  - KnifeflightSFX: {fileID: 8300000, guid: ded9183f09938cd4c84d4a1fe0ff967e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
