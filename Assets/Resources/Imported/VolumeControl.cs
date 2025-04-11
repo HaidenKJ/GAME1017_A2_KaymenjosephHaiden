@@ -8,9 +8,15 @@ public class VolumeControl : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider masterVolumeSlider;
 
+    private float savedMusicVolume = 1f;
+
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // Save the initial music volume at the start
+        savedMusicVolume = SoundManager.GetMusicVolume();
+        Debug.Log("[VolumeControl] Initial saved music volume: " + savedMusicVolume); // Debug log
 
         // Initialize sliders with current volume levels
         if (sfxVolumeSlider != null)
@@ -39,14 +45,32 @@ public class VolumeControl : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "EndSceneA2") // <- Your target scene
+        string sceneName = scene.name;
+
+        if (sceneName == "EndSceneA2")
         {
-            Debug.Log("[VolumeControl] Muting music due to scene: EndSceneA2");
+            Debug.Log("[VolumeControl] Muting music for EndSceneA2");
             SoundManager.SetMusicVolume(0f);
 
             if (musicVolumeSlider != null)
                 musicVolumeSlider.value = 0f;
         }
+        else if (sceneName == "StartSceneA2" || sceneName == "GameSceneA2")
+        {
+            Debug.Log("[VolumeControl] Restoring music volume for: " + sceneName);
+
+            // Delay restoring the music volume to ensure the scene is fully loaded
+            Invoke(nameof(RestoreMusicVolume), 0.1f); // Small delay to allow scene changes
+        }
+    }
+
+    private void RestoreMusicVolume()
+    {
+        Debug.Log("[VolumeControl] Restoring music volume to: " + savedMusicVolume); // Debug log to check volume restoration
+        SoundManager.SetMusicVolume(savedMusicVolume);
+
+        if (musicVolumeSlider != null)
+            musicVolumeSlider.value = savedMusicVolume;
     }
 
     public void OnSFXVolumeChanged(float value)
@@ -57,6 +81,7 @@ public class VolumeControl : MonoBehaviour
     public void OnMusicVolumeChanged(float value)
     {
         SoundManager.SetMusicVolume(value);
+        savedMusicVolume = value; // Update saved volume if the user changes it
     }
 
     public void OnMasterVolumeChanged(float value)
