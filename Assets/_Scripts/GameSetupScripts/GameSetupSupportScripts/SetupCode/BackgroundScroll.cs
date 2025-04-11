@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BackgroundScroll : MonoBehaviour
 {
-    [SerializeField] private float BackgroundMoveSpeed = 3f; // Movement speed
+    [SerializeField] private float BackgroundMoveSpeed = 0.6f; // Movement speed
     private SpriteRenderer sr;
     
     // private Material mat
