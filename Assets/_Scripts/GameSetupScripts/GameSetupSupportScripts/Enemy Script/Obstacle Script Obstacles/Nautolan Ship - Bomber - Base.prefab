@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: f3c699ce1a098f3438c2d0bf70f4eb10, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: f3c699ce1a098f3438c2d0bf70f4eb10, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: f3c699ce1a098f3438c2d0bf70f4eb10, type: 3}
       propertyPath: m_LocalScale.z
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: f3c699ce1a098f3438c2d0bf70f4eb10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: f3c699ce1a098f3438c2d0bf70f4eb10, type: 3}
       propertyPath: m_LocalPosition.y
@@ -120,5 +120,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.24000001}
+  m_Size: {x: 0.3, y: 0.35}
   m_EdgeRadius: 0

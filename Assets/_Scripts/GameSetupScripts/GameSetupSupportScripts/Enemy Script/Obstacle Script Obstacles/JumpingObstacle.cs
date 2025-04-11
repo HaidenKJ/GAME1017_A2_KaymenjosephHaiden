@@ -27,7 +27,7 @@ public class JumpingObstacle : MonoBehaviour
 
     public void SetFixedSpawnPosition()
     {
-        transform.position = new Vector3(spawnXPosition, -0.07f, 0f); // Always spawn at Y = -0.07f
+        transform.position = new Vector3(spawnXPosition, -3.91f, 0f); // Always spawn at Y = -0.07f
     }
 
     public void TeleportToSpawn()
