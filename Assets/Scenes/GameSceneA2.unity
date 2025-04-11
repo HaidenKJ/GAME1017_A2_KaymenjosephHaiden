@@ -443,14 +443,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 819559710}
     m_Modifications:
     - target: {fileID: 359927982117786882, guid: b5daaf731cc76034c86da7c14338cf57, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 359927982117786882, guid: b5daaf731cc76034c86da7c14338cf57, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 359927982117786882, guid: b5daaf731cc76034c86da7c14338cf57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.59
       objectReference: {fileID: 0}
@@ -566,7 +558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2375910148512339997, guid: 6afdf8e8675be814e97c669b8f54fa65, type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2375910148512339997, guid: 6afdf8e8675be814e97c669b8f54fa65, type: 3}
       propertyPath: m_GravityScale
@@ -574,7 +566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2375910148512339997, guid: 6afdf8e8675be814e97c669b8f54fa65, type: 3}
       propertyPath: m_CollisionDetection
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2375910148512339997, guid: 6afdf8e8675be814e97c669b8f54fa65, type: 3}
       propertyPath: m_UseFullKinematicContacts
@@ -797,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 7228735301318656504, guid: f0a5e49687e909d4eaf8167179a90b1f, type: 3}
     - target: {fileID: 4814844225735137599, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: m_Size.x
-      value: 1.23
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4814844225735137599, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: m_Size.y
