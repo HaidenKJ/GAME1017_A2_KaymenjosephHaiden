@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpingObstacle : MonoBehaviour
+public class SlidingObstacle : MonoBehaviour
 {
-    [SerializeField] private float ObstacleMoveSpeed = 5f;
-    [SerializeField] private float spawnXPosition = 12f; // Spawn position on the X-axis
+    [SerializeField] private float ObstacleMoveSpeed = 7f;
+    [SerializeField] private float spawnXPosition = 15f; // Spawn position on the X-axis
     [SerializeField] private float despawnXPosition = -15f; // X position for despawning
 
     private void Start()
@@ -27,7 +27,7 @@ public class JumpingObstacle : MonoBehaviour
 
     public void SetFixedSpawnPosition()
     {
-        transform.position = new Vector3(spawnXPosition, -3.91f, 0f); // Always spawn at Y = -0.07f
+        transform.position = new Vector3(spawnXPosition, -3.5f, 0f); 
     }
 
     public void TeleportToSpawn()
