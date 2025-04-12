@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
     private bool isGrounded;
     private bool isCrouching;
     private bool isInvulnerable = false; // Track invulnerability state
-    private float invulnerabilityDuration = 10f; // Invulnerability duration
+    private float invulnerabilityDuration = 5f; // Invulnerability duration
     private float invulnerabilityTimer;
 
     private Rigidbody2D rb;
