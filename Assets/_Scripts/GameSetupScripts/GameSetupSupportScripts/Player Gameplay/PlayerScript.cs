@@ -18,11 +18,16 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float crouchSpeed = 2f;
     [SerializeField] private float normalSpeed = 5f;
 
-    private bool isGrounded;
-    private bool isCrouching;
+    public bool isGrounded;
+    public bool isCrouching;
     private bool isInvulnerable = false; // Track invulnerability state
     [SerializeField] private float invulnerabilityDuration = 5f; // Invulnerability duration
     private float invulnerabilityTimer;
+    private int crouchCount = 0;
+    private bool crouchAlreadyCounted = false;
+    private bool lostLifeAchievementUnlocked = false;
+
+
 
     private Rigidbody2D rb;
     private Collider2D playerCollider;
@@ -90,14 +95,28 @@ public class PlayerScript : MonoBehaviour
             isCrouching = true;
             playerCollider.transform.localScale = new Vector3(1, 0.5f, 1);
             PlayerMoveSpeed = crouchSpeed;
+
+            if (!crouchAlreadyCounted)
+            {
+                crouchCount++;
+                //Debug.Log($"Player crouched! Count: {crouchCount}");
+                crouchAlreadyCounted = true;
+
+                if (crouchCount >= 15)
+                {
+                    Debug.Log("Achievement: Rolled Under Obstacle 10 Times!");
+                }
+            }
         }
         else if (!crouch && isCrouching)
         {
             isCrouching = false;
             playerCollider.transform.localScale = new Vector3(1, 1f, 1);
             PlayerMoveSpeed = normalSpeed;
+            crouchAlreadyCounted = false; // reset so next crouch counts again
         }
     }
+
 
     private void UpdateLivesUI()
     {
@@ -113,6 +132,12 @@ public class PlayerScript : MonoBehaviour
 
         currentLives--;
         UpdateLivesUI();
+
+        if (!lostLifeAchievementUnlocked)
+        {
+            Debug.Log("🏆 Achievement: Lost a Life!");
+            lostLifeAchievementUnlocked = true;
+        }
 
         if (damageSFX != null && audioSource != null)
         {
