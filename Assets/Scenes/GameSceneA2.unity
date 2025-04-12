@@ -784,7 +784,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.52, y: 0.33}
+  m_Size: {x: 0.52, y: 0.91}
   m_EdgeRadius: 0
 --- !u!82 &839502737
 AudioSource:
@@ -895,7 +895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObstacleMoveSpeed: 7
-  spawnXPosition: 15
+  spawnXPosition: 25
   despawnXPosition: -15
 --- !u!1 &868004311
 GameObject:
