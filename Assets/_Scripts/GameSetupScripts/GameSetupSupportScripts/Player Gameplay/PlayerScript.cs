@@ -1,75 +1,73 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
-    // [SerializeField] private GameObject bulletPrefab;
-    // [SerializeField] private GameObject CouscousPrefab;
-    // private bool hasCouscousCharge = false; 
     [SerializeField] public float PlayerMoveSpeed = 5f;
-    [SerializeField] private int maxLives = 3; // Maximum lives
+    [SerializeField] private int maxLives = 3;
     private int currentLives;
-    [SerializeField] private TMP_Text livesText; // UI Text to display lives
+    [SerializeField] private TMP_Text livesText;
     [SerializeField] private AudioClip damageSFX;
     [SerializeField] private AudioClip JumpSFX;
-    [SerializeField] private AudioClip KnifeflightSFX; // Crouching SFX
+    [SerializeField] private AudioClip KnifeflightSFX;
 
     private AudioSource audioSource;
 
-    // Add jump and crouch settings
-    [SerializeField] private float jumpForce = 5f; // Jump force
-    [SerializeField] private float crouchSpeed = 2f; // Speed while crouching
-    [SerializeField] private float normalSpeed = 5f; // Normal speed
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float crouchSpeed = 2f;
+    [SerializeField] private float normalSpeed = 5f;
 
     private bool isGrounded;
     private bool isCrouching;
+    private bool isInvulnerable = false; // Track invulnerability state
+    private float invulnerabilityDuration = 10f; // Invulnerability duration
+    private float invulnerabilityTimer;
 
     private Rigidbody2D rb;
     private Collider2D playerCollider;
-    private LayerMask groundLayer; // Ground detection
+    private LayerMask groundLayer;
+
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         currentLives = maxLives;
         UpdateLivesUI();
         audioSource = GetComponent<AudioSource>();
-        
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
-        groundLayer = LayerMask.GetMask("Ground"); // Ensure "Ground" layer is set in your Unity project
+        groundLayer = LayerMask.GetMask("Ground");
+
+        // Get the SpriteRenderer from the child GameObject
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // Find SpriteRenderer on child object
     }
 
     void Update()
     {
-        // // Handle shooting
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     GameObject bulletInst = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        //     Destroy(bulletInst, 3f);
-        // }
-        // // Handle shooting Couscous Missile (new addition)
-        // if (Input.GetKeyDown(KeyCode.C)) 
-        // {
-        //     ShootCouscousMissile();
-        //     hasCouscousCharge = false; // Consume charge after shooting
-        // }
+        if (isInvulnerable)
+        {
+            invulnerabilityTimer -= Time.deltaTime;
+            if (invulnerabilityTimer <= 0)
+            {
+                EndInvulnerability();
+            }
+        }
 
-        // Handle movement using Unity's Input system
+        // Handle movement
         float moveHorizontal = Input.GetAxis("Hori");
         Vector3 movement = new Vector3(moveHorizontal, 0, 0);
         transform.position += movement * PlayerMoveSpeed * Time.deltaTime;
 
-        // Handle Jumping
+        // Handle jumping
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Apply jump force
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             audioSource.PlayOneShot(JumpSFX);
-            
         }
 
-        // Handle Crouching
-        if (Input.GetKey(KeyCode.S)) // Crouch when pressing "S" key
+        // Handle crouching
+        if (Input.GetKey(KeyCode.S))
         {
             Crouch(true);
             audioSource.PlayOneShot(KnifeflightSFX);
@@ -83,7 +81,6 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = Physics2D.IsTouchingLayers(playerCollider, groundLayer);
-        Debug.Log("Is Grounded: " + isGrounded); // Check if player is grounded
     }
 
     private void Crouch(bool crouch)
@@ -91,14 +88,14 @@ public class PlayerScript : MonoBehaviour
         if (crouch && !isCrouching)
         {
             isCrouching = true;
-            playerCollider.transform.localScale = new Vector3(1, 0.5f, 1); // Make the player smaller for crouch
-            PlayerMoveSpeed = crouchSpeed; // Reduce speed while crouching
+            playerCollider.transform.localScale = new Vector3(1, 0.5f, 1);
+            PlayerMoveSpeed = crouchSpeed;
         }
         else if (!crouch && isCrouching)
         {
             isCrouching = false;
-            playerCollider.transform.localScale = new Vector3(1, 1f, 1); // Reset scale back to normal
-            PlayerMoveSpeed = normalSpeed; // Reset to normal speed
+            playerCollider.transform.localScale = new Vector3(1, 1f, 1);
+            PlayerMoveSpeed = normalSpeed;
         }
     }
 
@@ -112,6 +109,8 @@ public class PlayerScript : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (isInvulnerable) return; // Ignore damage if invulnerable
+
         currentLives--;
         UpdateLivesUI();
 
@@ -124,29 +123,54 @@ public class PlayerScript : MonoBehaviour
         {
             GameOver();
         }
+        else
+        {
+            StartInvulnerability(); // Start invulnerability after taking damage
+        }
     }
 
     public void GainLife()
     {
-        if (currentLives < maxLives) // Prevent exceeding max lives
+        if (currentLives < maxLives)
         {
             currentLives++;
             UpdateLivesUI();
         }
     }
 
-    // private void ShootCouscousMissile()
-    // {
-    //     // Instantiate the Couscous Missile at player's position (you can adjust the offset if needed)
-    //     GameObject couscousMissile = Instantiate(CouscousPrefab, transform.position, Quaternion.identity);      
-    // }
-    // public void CollectCouscousItem()
-    // {
-    //     hasCouscousCharge = true; // Replenish charge when the item is collected
-    // }
-    
     private void GameOver()
     {
-        SceneManager.LoadScene(2); // Load Scene 2 when the game is over
+        SceneManager.LoadScene(2); // Game Over scene
+    }
+
+    private void StartInvulnerability()
+    {
+        isInvulnerable = true;
+        invulnerabilityTimer = invulnerabilityDuration;
+
+        // Check if the SpriteRenderer is found on the child GameObject
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 0.5f); // Set player to semi-transparent
+        }
+        else
+        {
+            Debug.LogWarning("SpriteRenderer not found on any child of the PlayerShip Parent. Make sure the component is attached to a child object.");
+        }
+
+        playerCollider.enabled = false; // Disable collisions with obstacles (but allow ground)
+    }
+
+    private void EndInvulnerability()
+    {
+        isInvulnerable = false;
+
+        // Reset transparency if the SpriteRenderer is found
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 1); // Reset transparency
+        }
+
+        playerCollider.enabled = true; // Enable collisions again
     }
 }
