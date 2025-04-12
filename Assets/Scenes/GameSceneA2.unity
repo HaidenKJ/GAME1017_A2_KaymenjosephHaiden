@@ -1083,6 +1083,10 @@ PrefabInstance:
       propertyPath: KnifeflightSFX
       value: 
       objectReference: {fileID: 8300000, guid: ded9183f09938cd4c84d4a1fe0ff967e, type: 3}
+    - target: {fileID: 2120839063621981438, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
+      propertyPath: invulnerabilityDuration
+      value: 59
+      objectReference: {fileID: 0}
     - target: {fileID: 4814844225735137599, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: m_Size.x
       value: 1.5

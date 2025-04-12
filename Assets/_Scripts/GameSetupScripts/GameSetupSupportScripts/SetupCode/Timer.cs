@@ -7,12 +7,21 @@ public class Timer : MonoBehaviour
     public float elapsedTime;
     public bool isRunning = true;
 
+    private bool hasSurvivedOneMinute = false; // Flag to track if the achievement is unlocked
+
     void Update()
     {
         if (isRunning)
         {
             elapsedTime += Time.deltaTime;
             UpdateTimerUI();
+
+            // Check for Survive One Minute achievement
+            if (!hasSurvivedOneMinute && elapsedTime >= 60f)
+            {
+                hasSurvivedOneMinute = true; // Achievement triggered
+                NotifyAchievementUnlocked(); // Call the method to notify achievement
+            }
         }
     }
 
@@ -36,5 +45,12 @@ public class Timer : MonoBehaviour
     public float GetTime()
     {
         return elapsedTime;
+    }
+
+    // Notify the achievement observer when unlocked
+    private void NotifyAchievementUnlocked()
+    {
+        // Here you would notify the AchievementObserver or any observer system
+        Debug.Log("Survived One Minute Achievement Unlocked!");
     }
 }
