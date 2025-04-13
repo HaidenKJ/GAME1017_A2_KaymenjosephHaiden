@@ -5,6 +5,9 @@ public class RollUnderObstacle : MonoBehaviour
     public float rayLength = 5f;
     private int rollUnderCount = 0;
     private bool wasPlayerBelowLastFrame = false;
+    [SerializeField] public AudioClip AchievementSucceded;
+
+    private AudioSource audioSource;
 
     void Update()
     {
@@ -27,6 +30,7 @@ public class RollUnderObstacle : MonoBehaviour
                     if (rollUnderCount == 10)
                     {
                         Debug.Log(" Player Rolled Under Obstacle 10 Times!");
+                        // audioSource.PlayOneShot(AchievementSucceded);
                     }
                 }
 

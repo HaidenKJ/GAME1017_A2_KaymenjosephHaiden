@@ -3,7 +3,9 @@ guid: e2b641fb8ab19e34fa2eb3a76526b044
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - timerText: {instanceID: 0}
+  - AchievementSucceded: {fileID: 8300000, guid: 8db12dc755861bc468a5be18bd1827c3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

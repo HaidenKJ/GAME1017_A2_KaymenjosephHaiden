@@ -24,5 +24,6 @@ public class CanvasScript : MonoBehaviour
         // SoundManager.AddSound("PGC", Resources.Load<AudioClip>("Pistol Gun Cocking Sound Effects"), SoundType.SOUND_SFX);
         // SoundManager.AddSound("Collision", Resources.Load<AudioClip>("HalfLife1Crowbarhitonce"), SoundType.SOUND_SFX);
         // SoundManager.AddSound("RestartDing", Resources.Load<AudioClip>("ding-sfx"), SoundType.SOUND_SFX);
+        // SoundManager.AddSound("LVLUP", Resources.Load<AudioClip>("LVLUP"), SoundType.SOUND_SFX);
     }
 }

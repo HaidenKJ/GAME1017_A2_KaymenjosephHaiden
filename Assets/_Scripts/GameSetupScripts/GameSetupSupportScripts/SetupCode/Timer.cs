@@ -8,6 +8,9 @@ public class Timer : MonoBehaviour
     public bool isRunning = true;
 
     private bool hasSurvivedOneMinute = false; // Flag to track if the achievement is unlocked
+    [SerializeField] public AudioClip AchievementSucceded;
+
+    private AudioSource audioSource;
 
     void Update()
     {
@@ -21,6 +24,7 @@ public class Timer : MonoBehaviour
             {
                 hasSurvivedOneMinute = true; // Achievement triggered
                 NotifyAchievementUnlocked(); // Call the method to notify achievement
+                audioSource.PlayOneShot(AchievementSucceded);
             }
         }
     }

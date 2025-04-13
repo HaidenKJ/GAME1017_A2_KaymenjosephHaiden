@@ -6,6 +6,9 @@ public class JumpOverObstacle : MonoBehaviour
 
     private int jumpOverCount = 0;
     private bool playerLeftLastFrame = false;  // Tracks the player's position relative to the ray in the previous frame
+    [SerializeField] public AudioClip AchievementSucceded;
+
+    private AudioSource audioSource;
 
     void Update()
     {
@@ -24,6 +27,7 @@ public class JumpOverObstacle : MonoBehaviour
             if (jumpOverCount >= 20) // 20 times cuz it triggers on the way down too, meaning 10 up, 10 down
             {
                 Debug.Log("🏆 Player Jumped Over Obstacle 10 Times!");
+                // audioSource.PlayOneShot(AchievementSucceded);
             }
         }
 

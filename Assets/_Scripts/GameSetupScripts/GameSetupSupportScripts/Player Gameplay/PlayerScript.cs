@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private AudioClip damageSFX;
     [SerializeField] private AudioClip JumpSFX;
     [SerializeField] private AudioClip KnifeflightSFX;
+    [SerializeField] public AudioClip AchievementSucceded;
 
     private AudioSource audioSource;
 
@@ -105,6 +106,7 @@ public class PlayerScript : MonoBehaviour
                 if (crouchCount >= 15)
                 {
                     Debug.Log("Achievement: Rolled Under Obstacle 10 Times!");
+                    // audioSource.PlayOneShot(AchievementSucceded);
                 }
             }
         }
@@ -135,8 +137,9 @@ public class PlayerScript : MonoBehaviour
 
         if (!lostLifeAchievementUnlocked)
         {
-            Debug.Log("🏆 Achievement: Lost a Life!");
+            Debug.Log(" Achievement: Lost a Life!");
             lostLifeAchievementUnlocked = true;
+            audioSource.PlayOneShot(AchievementSucceded);
         }
 
         if (damageSFX != null && audioSource != null)
